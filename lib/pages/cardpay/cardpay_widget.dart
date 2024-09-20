@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'cardpay_model.dart';
 export 'cardpay_model.dart';
@@ -20,7 +19,7 @@ class CardpayWidget extends StatefulWidget {
   final LocationsRecord? directions;
 
   @override
-  _CardpayWidgetState createState() => _CardpayWidgetState();
+  State<CardpayWidget> createState() => _CardpayWidgetState();
 }
 
 class _CardpayWidgetState extends State<CardpayWidget> {
@@ -33,7 +32,7 @@ class _CardpayWidgetState extends State<CardpayWidget> {
     super.initState();
     _model = createModel(context, () => CardpayModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -45,21 +44,10 @@ class _CardpayWidgetState extends State<CardpayWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -86,6 +74,7 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                   fontFamily: 'Outfit',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
@@ -117,7 +106,10 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x33000000),
-                                offset: Offset(0.0, 2.0),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
                               )
                             ],
                             borderRadius: BorderRadius.circular(12.0),
@@ -139,6 +131,7 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                                         fontFamily: 'Outfit',
                                         color: const Color(0xFF14181B),
                                         fontSize: 22.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -153,6 +146,7 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                                           fontFamily: 'Plus Jakarta Sans',
                                           color: const Color(0xFF57636C),
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
                                   ),
@@ -178,7 +172,10 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                                               BoxShadow(
                                                 blurRadius: 0.0,
                                                 color: Color(0xFFE0E3E7),
-                                                offset: Offset(0.0, 1.0),
+                                                offset: Offset(
+                                                  0.0,
+                                                  1.0,
+                                                ),
                                               )
                                             ],
                                             borderRadius:
@@ -244,6 +241,8 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                                                                         0xFF14181B),
                                                                     fontSize:
                                                                         22.0,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -274,6 +273,8 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                                                               color: const Color(
                                                                   0xFF14181B),
                                                               fontSize: 22.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
@@ -305,7 +306,11 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                         obscureNumber: true,
                         obscureCvv: false,
                         spacing: 10.0,
-                        textStyle: FlutterFlowTheme.of(context).labelMedium,
+                        textStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         inputDecoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -344,6 +349,7 @@ class _CardpayWidgetState extends State<CardpayWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
                           color: Colors.white,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
                     borderSide: const BorderSide(

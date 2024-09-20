@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -11,7 +9,7 @@ class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
 
   @override
-  _HomeWidgetState createState() => _HomeWidgetState();
+  State<HomeWidget> createState() => _HomeWidgetState();
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
@@ -24,7 +22,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     super.initState();
     _model = createModel(context, () => HomeModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -36,21 +34,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).info,
@@ -67,6 +52,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).accent4,
                       fontSize: 32.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
                     ),
               ),
@@ -94,6 +80,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     fontFamily: 'Plus Jakarta Sans',
                     color: const Color(0xFF57636C),
                     fontSize: 14.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -140,6 +127,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     fontFamily: 'Outfit',
                                     color: const Color(0xFF0F1113),
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -155,6 +143,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       fontFamily: 'Plus Jakarta Sans',
                                       color: const Color(0xFF57636C),
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -235,6 +224,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     fontFamily: 'Outfit',
                                     color: const Color(0xFF0F1113),
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -250,6 +240,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       fontFamily: 'Plus Jakarta Sans',
                                       color: const Color(0xFF57636C),
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -330,6 +321,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     fontFamily: 'Outfit',
                                     color: const Color(0xFF0F1113),
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -345,6 +337,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       fontFamily: 'Plus Jakarta Sans',
                                       color: const Color(0xFF57636C),
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -425,6 +418,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     fontFamily: 'Outfit',
                                     color: const Color(0xFF0F1113),
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -440,6 +434,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       fontFamily: 'Plus Jakarta Sans',
                                       color: const Color(0xFF57636C),
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),

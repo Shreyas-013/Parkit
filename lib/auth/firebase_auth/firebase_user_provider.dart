@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class ParkitFirebaseUser extends BaseAuthUser {
-  ParkitFirebaseUser(this.user);
+class ParkitKpFirebaseUser extends BaseAuthUser {
+  ParkitKpFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -54,17 +54,18 @@ class ParkitFirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => ParkitFirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      ParkitKpFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> parkitFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> parkitKpFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = ParkitFirebaseUser(user);
+        currentUser = ParkitKpFirebaseUser(user);
         return currentUser!;
       },
     );

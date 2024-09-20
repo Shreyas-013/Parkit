@@ -7,8 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/bottomdraw/bottomdraw_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'maps_model.dart';
 export 'maps_model.dart';
 
@@ -21,7 +19,7 @@ class MapsWidget extends StatefulWidget {
   final LocationsRecord? ngitdraw;
 
   @override
-  _MapsWidgetState createState() => _MapsWidgetState();
+  State<MapsWidget> createState() => _MapsWidgetState();
 }
 
 class _MapsWidgetState extends State<MapsWidget> {
@@ -36,8 +34,8 @@ class _MapsWidgetState extends State<MapsWidget> {
     _model = createModel(context, () => MapsModel());
 
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -49,16 +47,6 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -77,9 +65,7 @@ class _MapsWidgetState extends State<MapsWidget> {
     }
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -112,6 +98,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                         fontFamily: 'Outfit',
                         color: Colors.white,
                         fontSize: 22.0,
+                        letterSpacing: 0.0,
                       ),
                 ),
                 Align(
@@ -127,7 +114,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                       webGoogleMapsApiKey:
                           'AIzaSyCEcyiRMH4yWMHOeYw1mx3VYAIfIMrpzqw',
                       onSelect: (place) async {
-                        setState(() => _model.placePickerValue = place);
+                        safeSetState(() => _model.placePickerValue = place);
                       },
                       defaultText: '',
                       icon: Icon(
@@ -143,6 +130,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
                                   color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 2.0,
                         borderSide: const BorderSide(
@@ -181,6 +169,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                 }
                 List<LocationsRecord> googleMapLocationsRecordList =
                     snapshot.data!;
+
                 return FlutterFlowGoogleMap(
                   controller: _model.googleMapsController,
                   onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
@@ -188,9 +177,9 @@ class _MapsWidgetState extends State<MapsWidget> {
                       currentUserLocationValue!,
                   markers: googleMapLocationsRecordList
                       .map(
-                        (googleMapLocationsRecord) => FlutterFlowMarker(
-                          googleMapLocationsRecord.reference.path,
-                          googleMapLocationsRecord.location!,
+                        (marker) => FlutterFlowMarker(
+                          marker.reference.path,
+                          marker.location!,
                           () async {
                             // marker1
                             await showModalBottomSheet(
@@ -202,15 +191,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                               context: context,
                               builder: (context) {
                                 return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
+                                  onTap: () => FocusScope.of(context).unfocus(),
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: BottomdrawWidget(
-                                      details: googleMapLocationsRecord,
+                                      details: marker,
                                     ),
                                   ),
                                 );

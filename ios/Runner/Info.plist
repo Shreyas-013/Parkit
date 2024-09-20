@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>PARKIT</string>
+	<string>PARKIT KP</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>parkit.com</string>
+        <string>parkitkp.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>parkit</string>
+        <string>parkitkp</string>
         </array>
         </dict>
     </array>

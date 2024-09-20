@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'paysucess_model.dart';
 export 'paysucess_model.dart';
@@ -13,7 +12,7 @@ class PaysucessWidget extends StatefulWidget {
   const PaysucessWidget({super.key});
 
   @override
-  _PaysucessWidgetState createState() => _PaysucessWidgetState();
+  State<PaysucessWidget> createState() => _PaysucessWidgetState();
 }
 
 class _PaysucessWidgetState extends State<PaysucessWidget> {
@@ -26,7 +25,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
     super.initState();
     _model = createModel(context, () => PaysucessModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -38,15 +37,6 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Scaffold(
@@ -71,7 +61,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                     icon: const Icon(
                       Icons.close_rounded,
                       color: Color(0xFF57636C),
-                      size: 20.0,
+                      size: 25.0,
                     ),
                     onPressed: () async {
                       context.pop();
@@ -109,6 +99,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       fontSize: 36.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                     ),
               ),
@@ -121,6 +112,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                       fontFamily: 'Outfit',
                       color: Colors.black,
                       fontSize: 57.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
                     ),
               ),
@@ -134,6 +126,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                       fontFamily: 'Plus Jakarta Sans',
                       color: const Color(0xFF57636C),
                       fontSize: 16.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
                     ),
               ),
@@ -184,6 +177,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                                       fontFamily: 'Plus Jakarta Sans',
                                       color: const Color(0xFF14181B),
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -212,6 +206,7 @@ class _PaysucessWidgetState extends State<PaysucessWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
                   borderSide: const BorderSide(

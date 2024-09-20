@@ -56,29 +56,33 @@ class _FFPlacePickerState extends State<FlutterFlowPlacePicker> {
   }
 
   @override
-  Widget build(BuildContext context) => FFButtonWidget(
-        text: _selectedPlace ?? widget.defaultText ?? 'Search places',
-        icon: widget.icon,
-        onPressed: () async {
-          final p = await PlacesAutocomplete.show(
-            context: context,
-            apiKey: googleMapsApiKey,
-            onError: (response) =>
-                print('Error occured when getting places response:'
-                    '\n${response.errorMessage}'),
-            mode: Mode.overlay,
-            types: [],
-            components: [],
-            strictbounds: false,
-            proxyBaseUrl: widget.proxyBaseUrl,
-          );
+  Widget build(BuildContext context) {
+    String? languageCode = Localizations.localeOf(context).languageCode;
+    return FFButtonWidget(
+      text: _selectedPlace ?? widget.defaultText ?? 'Search places',
+      icon: widget.icon,
+      onPressed: () async {
+        final p = await PlacesAutocomplete.show(
+          context: context,
+          apiKey: googleMapsApiKey,
+          onError: (response) =>
+              print('Error occured when getting places response:'
+                  '\n${response.errorMessage}'),
+          mode: Mode.overlay,
+          types: [],
+          components: [],
+          strictbounds: false,
+          proxyBaseUrl: widget.proxyBaseUrl,
+          language: languageCode,
+        );
 
-          await displayPrediction(p);
-        },
-        options: widget.buttonOptions,
-      );
+        await displayPrediction(p, languageCode);
+      },
+      options: widget.buttonOptions,
+    );
+  }
 
-  Future displayPrediction(Prediction? p) async {
+  Future displayPrediction(Prediction? p, String? languageCode) async {
     if (p == null) {
       return;
     }
@@ -91,10 +95,13 @@ class _FFPlacePickerState extends State<FlutterFlowPlacePicker> {
       baseUrl: widget.proxyBaseUrl,
       apiHeaders: await const GoogleApiHeaders().getHeaders(),
     );
-    PlacesDetailsResponse detail = await places.getDetailsByPlaceId(placeId);
-    setState(() {
-      _selectedPlace = detail.result.name;
-    });
+    PlacesDetailsResponse detail =
+        await places.getDetailsByPlaceId(placeId, language: languageCode);
+    if (mounted) {
+      setState(() {
+        _selectedPlace = detail.result.name;
+      });
+    }
 
     widget.onSelect(
       FFPlace(

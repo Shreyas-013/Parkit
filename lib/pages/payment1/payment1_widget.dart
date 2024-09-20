@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'payment1_model.dart';
@@ -21,7 +20,7 @@ class Payment1Widget extends StatefulWidget {
   final LocationsRecord? directions;
 
   @override
-  _Payment1WidgetState createState() => _Payment1WidgetState();
+  State<Payment1Widget> createState() => _Payment1WidgetState();
 }
 
 class _Payment1WidgetState extends State<Payment1Widget> {
@@ -34,7 +33,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
     super.initState();
     _model = createModel(context, () => Payment1Model());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -46,15 +45,6 @@ class _Payment1WidgetState extends State<Payment1Widget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Scaffold(
@@ -76,7 +66,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                 icon: const Icon(
                   Icons.arrow_back_rounded,
                   color: Color(0xFF57636C),
-                  size: 24.0,
+                  size: 25.0,
                 ),
                 onPressed: () async {
                   context.pop();
@@ -111,7 +101,10 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, 2.0),
+                          offset: Offset(
+                            0.0,
+                            2.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.circular(12.0),
@@ -133,6 +126,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                     fontFamily: 'Outfit',
                                     color: const Color(0xFF14181B),
                                     fontSize: 22.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -157,7 +151,10 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                         BoxShadow(
                                           blurRadius: 0.0,
                                           color: Color(0xFFE0E3E7),
-                                          offset: Offset(0.0, 1.0),
+                                          offset: Offset(
+                                            0.0,
+                                            1.0,
+                                          ),
                                         )
                                       ],
                                       borderRadius: BorderRadius.circular(0.0),
@@ -212,6 +209,8 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                                               color: const Color(
                                                                   0xFF14181B),
                                                               fontSize: 22.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
@@ -226,10 +225,10 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: RichText(
-                                                          textScaleFactor:
+                                                          textScaler:
                                                               MediaQuery.of(
                                                                       context)
-                                                                  .textScaleFactor,
+                                                                  .textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               const TextSpan(
@@ -261,6 +260,8 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                                                       0xFF57636C),
                                                                   fontSize:
                                                                       12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -287,6 +288,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                                         color:
                                                             const Color(0xFF14181B),
                                                         fontSize: 22.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -307,7 +309,10 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                       BoxShadow(
                                         blurRadius: 0.0,
                                         color: Color(0xFFE0E3E7),
-                                        offset: Offset(0.0, 1.0),
+                                        offset: Offset(
+                                          0.0,
+                                          1.0,
+                                        ),
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(0.0),
@@ -337,7 +342,10 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, 2.0),
+                          offset: Offset(
+                            0.0,
+                            2.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.circular(12.0),
@@ -356,6 +364,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                   fontFamily: 'Outfit',
                                   color: const Color(0xFF14181B),
                                   fontSize: 22.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -398,16 +407,16 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                         .override(
                                           fontFamily: 'Outfit',
                                           color: const Color(0xFF101213),
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                   count: _model.countControllerValue ??= 0,
                                   updateCount: (count) async {
-                                    setState(() =>
+                                    safeSetState(() =>
                                         _model.countControllerValue = count);
-                                    setState(() {
-                                      FFAppState().hoursSelect =
-                                          _model.countControllerValue!;
-                                    });
+                                    FFAppState().hoursSelect =
+                                        _model.countControllerValue!;
+                                    safeSetState(() {});
                                   },
                                   stepSize: 1,
                                   minimum: 0,
@@ -427,6 +436,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: const Color(0xFF57636C),
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -439,6 +449,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                   fontFamily: 'Readex Pro',
                                   color: const Color(0xFF101213),
                                   fontSize: 24.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ],
@@ -464,6 +475,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
                   borderSide: const BorderSide(
@@ -506,6 +518,7 @@ class _Payment1WidgetState extends State<Payment1Widget> {
                                 fontFamily: 'Plus Jakarta Sans',
                                 color: Colors.white,
                                 fontSize: 16.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
                       elevation: 2.0,

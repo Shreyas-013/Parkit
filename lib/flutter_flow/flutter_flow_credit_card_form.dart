@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+// ignore: implementation_imports
+import 'package:flutter_credit_card/src/masked_text_controller.dart';
 
 export 'package:flutter_credit_card/flutter_credit_card.dart'
     show CreditCardModel;
@@ -36,7 +38,7 @@ class FlutterFlowCreditCardForm extends StatefulWidget {
 }
 
 class _FlutterFlowCreditCardFormState extends State<FlutterFlowCreditCardForm> {
-  final MaskedTextController _cardNumberController =
+  final TextEditingController _cardNumberController =
       MaskedTextController(mask: '0000 0000 0000 0000');
   final TextEditingController _expiryDateController =
       MaskedTextController(mask: '00/00');
@@ -66,12 +68,24 @@ class _FlutterFlowCreditCardFormState extends State<FlutterFlowCreditCardForm> {
       _cvvCodeController.text = widget.creditCardModel.cvvCode;
     }
     cvvFocusNode.addListener(textFieldFocusDidChange);
-    _cardNumberController.addListener(() => setState(
-        () => widget.creditCardModel.cardNumber = _cardNumberController.text));
-    _expiryDateController.addListener(() => setState(
-        () => widget.creditCardModel.expiryDate = _expiryDateController.text));
-    _cvvCodeController.addListener(() => setState(
-        () => widget.creditCardModel.cvvCode = _cvvCodeController.text));
+    _cardNumberController.addListener(() {
+      if (mounted) {
+        setState(() =>
+            widget.creditCardModel.cardNumber = _cardNumberController.text);
+      }
+    });
+    _expiryDateController.addListener(() {
+      if (mounted) {
+        setState(() =>
+            widget.creditCardModel.expiryDate = _expiryDateController.text);
+      }
+    });
+    _cvvCodeController.addListener(() {
+      if (mounted) {
+        setState(
+            () => widget.creditCardModel.cvvCode = _cvvCodeController.text);
+      }
+    });
   }
 
   @override

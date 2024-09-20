@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'orders_model.dart';
 export 'orders_model.dart';
 
@@ -19,7 +17,7 @@ class OrdersWidget extends StatefulWidget {
   final LocationsRecord? directions;
 
   @override
-  _OrdersWidgetState createState() => _OrdersWidgetState();
+  State<OrdersWidget> createState() => _OrdersWidgetState();
 }
 
 class _OrdersWidgetState extends State<OrdersWidget> {
@@ -32,7 +30,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     super.initState();
     _model = createModel(context, () => OrdersModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -44,17 +42,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF1F4F8),
@@ -81,6 +68,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                 fontFamily: 'Outfit',
                 color: Colors.white,
                 fontSize: 36.0,
+                letterSpacing: 0.0,
                 fontWeight: FontWeight.w600,
               ),
         ),
@@ -103,7 +91,10 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                     BoxShadow(
                       blurRadius: 1.0,
                       color: Color(0xFFF1F4F8),
-                      offset: Offset(0.0, 0.0),
+                      offset: Offset(
+                        0.0,
+                        0.0,
+                      ),
                     )
                   ],
                   borderRadius: BorderRadius.only(
@@ -140,6 +131,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ],
@@ -186,6 +178,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                             fontFamily: 'Plus Jakarta Sans',
                             color: const Color(0xFF57636C),
                             fontSize: 14.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -227,7 +220,10 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                         BoxShadow(
                           blurRadius: 5.0,
                           color: Color(0x3416202A),
-                          offset: Offset(0.0, 2.0),
+                          offset: Offset(
+                            0.0,
+                            2.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.circular(12.0),
@@ -249,6 +245,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: const Color(0xFF57636C),
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -300,7 +297,10 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x3416202A),
-                        offset: Offset(0.0, 2.0),
+                        offset: Offset(
+                          0.0,
+                          2.0,
+                        ),
                       )
                     ],
                     borderRadius: BorderRadius.circular(12.0),
@@ -322,6 +322,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: const Color(0xFF57636C),
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                           ),
@@ -377,6 +378,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                     fontFamily: 'Lexend Deca',
                                     color: Colors.white,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                           elevation: 1.0,
@@ -408,6 +410,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                     fontFamily: 'Lexend Deca',
                                     color: const Color(0xFF14181B),
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                           elevation: 1.0,
