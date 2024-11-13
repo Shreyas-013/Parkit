@@ -5,10 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'loginpage_model.dart';
 export 'loginpage_model.dart';
 
@@ -16,7 +14,7 @@ class LoginpageWidget extends StatefulWidget {
   const LoginpageWidget({super.key});
 
   @override
-  _LoginpageWidgetState createState() => _LoginpageWidgetState();
+  State<LoginpageWidget> createState() => _LoginpageWidgetState();
 }
 
 class _LoginpageWidgetState extends State<LoginpageWidget>
@@ -25,87 +23,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 80.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 150.ms,
-          duration: 400.ms,
-          begin: const Offset(0.8, 0.8),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 300.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 300.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -116,23 +34,105 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
       vsync: this,
       length: 2,
       initialIndex: 0,
-    )..addListener(() => setState(() {}));
-    _model.emailAddressController ??= TextEditingController();
+    )..addListener(() => safeSetState(() {}));
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    _model.passwordconfController ??= TextEditingController();
+    _model.passwordconfTextController ??= TextEditingController();
     _model.passwordconfFocusNode ??= FocusNode();
 
-    _model.emailAddressCreateController ??= TextEditingController();
+    _model.emailAddressCreateTextController ??= TextEditingController();
     _model.emailAddressCreateFocusNode ??= FocusNode();
 
-    _model.passwordCreateController ??= TextEditingController();
+    _model.passwordCreateTextController ??= TextEditingController();
     _model.passwordCreateFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 80.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 150.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'imageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 1.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -144,21 +144,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -191,7 +178,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
-                                  offset: Offset(0.0, 2.0),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
+                                  ),
                                 )
                               ],
                               borderRadius: BorderRadius.circular(12.0),
@@ -216,6 +206,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                             fontFamily: 'Plus Jakarta Sans',
                                             color: Colors.white,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                           ),
                                       unselectedLabelStyle: const TextStyle(),
@@ -285,6 +276,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                         color:
                                                             const Color(0xFF101213),
                                                         fontSize: 24.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -305,6 +297,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF57636C),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -316,9 +309,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           8.0, 0.0, 8.0, 16.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .emailAddressController,
+                                                        .emailAddressTextController,
                                                     focusNode: _model
                                                         .emailAddressFocusNode,
+                                                    autofocus: false,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .sentences,
@@ -335,6 +329,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -349,6 +345,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -410,11 +408,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF101213),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                     validator: _model
-                                                        .emailAddressControllerValidator
+                                                        .emailAddressTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -424,9 +423,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           8.0, 0.0, 8.0, 16.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .passwordController,
+                                                        .passwordTextController,
                                                     focusNode: _model
                                                         .passwordFocusNode,
+                                                    autofocus: false,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .sentences,
@@ -444,6 +444,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -458,6 +460,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -510,7 +514,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                       fillColor:
                                                           const Color(0xCCFFFFFF),
                                                       suffixIcon: InkWell(
-                                                        onTap: () => setState(
+                                                        onTap: () =>
+                                                            safeSetState(
                                                           () => _model
                                                                   .passwordVisibility =
                                                               !_model
@@ -540,11 +545,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF101213),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                     validator: _model
-                                                        .passwordControllerValidator
+                                                        .passwordTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -554,9 +560,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           8.0, 0.0, 8.0, 16.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .passwordconfController,
+                                                        .passwordconfTextController,
                                                     focusNode: _model
                                                         .passwordconfFocusNode,
+                                                    autofocus: false,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .sentences,
@@ -575,6 +582,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -589,6 +598,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -641,7 +652,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                       fillColor:
                                                           const Color(0xCCFFFFFF),
                                                       suffixIcon: InkWell(
-                                                        onTap: () => setState(
+                                                        onTap: () =>
+                                                            safeSetState(
                                                           () => _model
                                                                   .passwordconfVisibility =
                                                               !_model
@@ -671,11 +683,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF101213),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                     validator: _model
-                                                        .passwordconfControllerValidator
+                                                        .passwordconfTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -693,10 +706,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                         GoRouter.of(context)
                                                             .prepareAuthEvent();
                                                         if (_model
-                                                                .passwordController
+                                                                .passwordTextController
                                                                 .text !=
                                                             _model
-                                                                .passwordconfController
+                                                                .passwordconfTextController
                                                                 .text) {
                                                           ScaffoldMessenger.of(
                                                                   context)
@@ -715,10 +728,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 .createAccountWithEmail(
                                                           context,
                                                           _model
-                                                              .emailAddressController
+                                                              .emailAddressTextController
                                                               .text,
                                                           _model
-                                                              .passwordController
+                                                              .passwordTextController
                                                               .text,
                                                         );
                                                         if (user == null) {
@@ -760,6 +773,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                       .white,
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -806,6 +821,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -901,6 +918,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                           0xFF101213),
                                                                       fontSize:
                                                                           14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -987,6 +1006,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                                 const Color(0xFF101213),
                                                                             fontSize:
                                                                                 14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
@@ -1054,6 +1075,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                         color:
                                                             const Color(0xFF101213),
                                                         fontSize: 24.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -1074,6 +1096,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF57636C),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -1085,9 +1108,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           8.0, 0.0, 8.0, 16.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .emailAddressCreateController,
+                                                        .emailAddressCreateTextController,
                                                     focusNode: _model
                                                         .emailAddressCreateFocusNode,
+                                                    autofocus: false,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .sentences,
@@ -1104,6 +1128,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1118,6 +1144,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1179,11 +1207,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF101213),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                     validator: _model
-                                                        .emailAddressCreateControllerValidator
+                                                        .emailAddressCreateTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -1193,9 +1222,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           8.0, 0.0, 8.0, 16.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .passwordCreateController,
+                                                        .passwordCreateTextController,
                                                     focusNode: _model
                                                         .passwordCreateFocusNode,
+                                                    autofocus: false,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .sentences,
@@ -1213,6 +1243,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1227,6 +1259,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 color: const Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1279,7 +1313,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                       fillColor:
                                                           const Color(0xCCFFFFFF),
                                                       suffixIcon: InkWell(
-                                                        onTap: () => setState(
+                                                        onTap: () =>
+                                                            safeSetState(
                                                           () => _model
                                                                   .passwordCreateVisibility =
                                                               !_model
@@ -1309,11 +1344,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                           color:
                                                               const Color(0xFF101213),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                     validator: _model
-                                                        .passwordCreateControllerValidator
+                                                        .passwordCreateTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -1336,10 +1372,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                 .signInWithEmail(
                                                           context,
                                                           _model
-                                                              .emailAddressCreateController
+                                                              .emailAddressCreateTextController
                                                               .text,
                                                           _model
-                                                              .passwordCreateController
+                                                              .passwordCreateTextController
                                                               .text,
                                                         );
                                                         if (user == null) {
@@ -1381,6 +1417,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                       .white,
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -1420,6 +1458,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                             color: const Color(
                                                                 0xFF57636C),
                                                             fontSize: 14.0,
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                           ),
@@ -1507,6 +1546,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                           0xFF101213),
                                                                       fontSize:
                                                                           14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -1593,6 +1634,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                             0xFF101213),
                                                                         fontSize:
                                                                             14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                       ),
@@ -1658,6 +1701,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                                           0xFF101213),
                                                                       fontSize:
                                                                           14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,

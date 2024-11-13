@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'report_model.dart';
 export 'report_model.dart';
 
@@ -14,7 +12,7 @@ class ReportWidget extends StatefulWidget {
   const ReportWidget({super.key});
 
   @override
-  _ReportWidgetState createState() => _ReportWidgetState();
+  State<ReportWidget> createState() => _ReportWidgetState();
 }
 
 class _ReportWidgetState extends State<ReportWidget>
@@ -23,27 +21,7 @@ class _ReportWidgetState extends State<ReportWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 110.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -56,6 +34,27 @@ class _ReportWidgetState extends State<ReportWidget>
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 110.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -63,7 +62,7 @@ class _ReportWidgetState extends State<ReportWidget>
       this,
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -75,21 +74,8 @@ class _ReportWidgetState extends State<ReportWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -128,13 +114,17 @@ class _ReportWidgetState extends State<ReportWidget>
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily: 'Outfit',
                           color: Colors.black,
+                          letterSpacing: 0.0,
                         ),
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                     child: Text(
                       'Fill out the form below to submit a ticket.',
-                      style: FlutterFlowTheme.of(context).labelLarge,
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                   Column(
@@ -153,9 +143,14 @@ class _ReportWidgetState extends State<ReportWidget>
                                 fontFamily: 'Outfit',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).alternate,
@@ -191,6 +186,7 @@ class _ReportWidgetState extends State<ReportWidget>
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                         cursorColor: FlutterFlowTheme.of(context).primary,
                         validator: _model.textController1Validator
@@ -202,9 +198,17 @@ class _ReportWidgetState extends State<ReportWidget>
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                           hintText: 'Short Description of what is going on...',
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).alternate,
@@ -239,6 +243,7 @@ class _ReportWidgetState extends State<ReportWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
+                              letterSpacing: 0.0,
                             ),
                         maxLines: 16,
                         minLines: 6,
@@ -287,6 +292,7 @@ class _ReportWidgetState extends State<ReportWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: Colors.black,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -319,6 +325,7 @@ class _ReportWidgetState extends State<ReportWidget>
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 4.0,
                         borderSide: const BorderSide(

@@ -3,8 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'help_model.dart';
 export 'help_model.dart';
 
@@ -12,7 +10,7 @@ class HelpWidget extends StatefulWidget {
   const HelpWidget({super.key});
 
   @override
-  _HelpWidgetState createState() => _HelpWidgetState();
+  State<HelpWidget> createState() => _HelpWidgetState();
 }
 
 class _HelpWidgetState extends State<HelpWidget> {
@@ -25,7 +23,7 @@ class _HelpWidgetState extends State<HelpWidget> {
     super.initState();
     _model = createModel(context, () => HelpModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -37,21 +35,8 @@ class _HelpWidgetState extends State<HelpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -122,6 +107,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                             FlutterFlowTheme.of(context).displaySmall.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                       ),
                       Padding(
@@ -135,6 +121,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 fontFamily: 'Outfit',
                                 color: Colors.white,
                                 fontSize: 20.0,
+                                letterSpacing: 0.0,
                               ),
                         ),
                       ),
@@ -143,7 +130,11 @@ class _HelpWidgetState extends State<HelpWidget> {
                             const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           'Park it is an smart parking management application based on flutter which helps us to organise parking and avoid street parking',
-                          style: FlutterFlowTheme.of(context).labelMedium,
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                       Padding(
@@ -216,6 +207,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   color: Colors.black,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                           Padding(
@@ -227,7 +219,12 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                           ),
                                         ],
@@ -268,6 +265,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.black,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: BorderSide(
@@ -297,6 +295,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: const BorderSide(

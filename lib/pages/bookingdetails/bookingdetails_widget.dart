@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'bookingdetails_model.dart';
@@ -22,7 +21,7 @@ class BookingdetailsWidget extends StatefulWidget {
   final LocationsRecord? details;
 
   @override
-  _BookingdetailsWidgetState createState() => _BookingdetailsWidgetState();
+  State<BookingdetailsWidget> createState() => _BookingdetailsWidgetState();
 }
 
 class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
@@ -35,7 +34,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
     super.initState();
     _model = createModel(context, () => BookingdetailsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,15 +46,6 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Scaffold(
@@ -71,7 +61,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
           icon: const Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 24.0,
+            size: 25.0,
           ),
           onPressed: () async {
             context.pop();
@@ -83,6 +73,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                 fontFamily: 'Plus Jakarta Sans',
                 color: Colors.white,
                 fontSize: 16.0,
+                letterSpacing: 0.0,
                 fontWeight: FontWeight.w500,
               ),
         ),
@@ -110,7 +101,10 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x32171717),
-                            offset: Offset(0.0, 2.0),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
                           )
                         ],
                         borderRadius: BorderRadius.only(
@@ -147,6 +141,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                               fontFamily: 'Outfit',
                                               color: Colors.white,
                                               fontSize: 36.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
@@ -173,6 +168,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                             fontFamily: 'Outfit',
                                             color: Colors.white,
                                             fontSize: 36.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
@@ -188,6 +184,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                             fontFamily: 'Plus Jakarta Sans',
                                             color: const Color(0xB3FFFFFF),
                                             fontSize: 14.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
@@ -218,6 +215,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 color: const Color(0xB3FFFFFF),
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w300,
                                               ),
                                         ),
@@ -235,6 +233,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                               fontFamily: 'Outfit',
                                               color: Colors.white,
                                               fontSize: 24.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -262,6 +261,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: const Color(0xFF57636C),
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),
@@ -284,7 +284,10 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x35000000),
-                                      offset: Offset(0.0, 1.0),
+                                      offset: Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
                                     )
                                   ],
                                   borderRadius: BorderRadius.circular(8.0),
@@ -343,6 +346,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                           color:
                                                               const Color(0xFF14181B),
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -375,6 +379,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                     fontFamily: 'Outfit',
                                                     color: const Color(0xFF14181B),
                                                     fontSize: 22.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                             ),
@@ -398,7 +403,10 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x35000000),
-                                      offset: Offset(0.0, 1.0),
+                                      offset: Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
                                     )
                                   ],
                                   borderRadius: BorderRadius.circular(8.0),
@@ -457,6 +465,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                           color:
                                                               const Color(0xFF14181B),
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -487,6 +496,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                     fontFamily: 'Outfit',
                                                     color: const Color(0xFF090F13),
                                                     fontSize: 22.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                             ),
@@ -510,7 +520,10 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x35000000),
-                                      offset: Offset(0.0, 1.0),
+                                      offset: Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
                                     )
                                   ],
                                   borderRadius: BorderRadius.circular(8.0),
@@ -572,6 +585,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                           color:
                                                               const Color(0xFF14181B),
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -593,15 +607,20 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                                                       FormFieldController<
                                                           String>(null),
                                                   options: const ['Empty'],
-                                                  onChanged: (val) => setState(
-                                                      () => _model
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
                                                           .dropDownValue = val),
                                                   width: 70.0,
                                                   height: 40.0,
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMedium,
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                   icon: Icon(
                                                     Icons
                                                         .keyboard_arrow_down_rounded,
@@ -669,6 +688,7 @@ class _BookingdetailsWidgetState extends State<BookingdetailsWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
                   borderSide: const BorderSide(

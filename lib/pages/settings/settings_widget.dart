@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'settings_model.dart';
 export 'settings_model.dart';
 
@@ -14,7 +12,7 @@ class SettingsWidget extends StatefulWidget {
   const SettingsWidget({super.key});
 
   @override
-  _SettingsWidgetState createState() => _SettingsWidgetState();
+  State<SettingsWidget> createState() => _SettingsWidgetState();
 }
 
 class _SettingsWidgetState extends State<SettingsWidget>
@@ -23,27 +21,29 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 0.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => SettingsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    animationsMap.addAll({
+      'iconOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -55,17 +55,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -83,6 +72,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                 fontFamily: 'Readex Pro',
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 fontSize: 30.0,
+                letterSpacing: 0.0,
               ),
         ),
         actions: const [],
@@ -131,6 +121,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Icon(
@@ -170,6 +161,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Icon(
@@ -210,6 +202,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Icon(
@@ -249,6 +242,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Icon(
@@ -288,6 +282,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Icon(
@@ -308,14 +303,20 @@ class _SettingsWidgetState extends State<SettingsWidget>
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
             child: Text(
               'App Versions',
-              style: FlutterFlowTheme.of(context).titleLarge,
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    fontFamily: 'Outfit',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
             child: Text(
               'v0.0.1',
-              style: FlutterFlowTheme.of(context).labelMedium,
+              style: FlutterFlowTheme.of(context).labelMedium.override(
+                    fontFamily: 'Readex Pro',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
           Padding(
@@ -337,6 +338,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                 textStyle: FlutterFlowTheme.of(context).labelMedium.override(
                       fontFamily: 'Readex Pro',
                       color: Colors.black,
+                      letterSpacing: 0.0,
                     ),
                 elevation: 0.0,
                 borderSide: const BorderSide(

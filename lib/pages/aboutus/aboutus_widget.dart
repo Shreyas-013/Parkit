@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'aboutus_model.dart';
 export 'aboutus_model.dart';
 
@@ -11,7 +9,7 @@ class AboutusWidget extends StatefulWidget {
   const AboutusWidget({super.key});
 
   @override
-  _AboutusWidgetState createState() => _AboutusWidgetState();
+  State<AboutusWidget> createState() => _AboutusWidgetState();
 }
 
 class _AboutusWidgetState extends State<AboutusWidget> {
@@ -24,7 +22,7 @@ class _AboutusWidgetState extends State<AboutusWidget> {
     super.initState();
     _model = createModel(context, () => AboutusModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -36,17 +34,6 @@ class _AboutusWidgetState extends State<AboutusWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -60,7 +47,7 @@ class _AboutusWidgetState extends State<AboutusWidget> {
           icon: const Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 24.0,
+            size: 25.0,
           ),
           onPressed: () async {
             context.pop();
@@ -71,6 +58,7 @@ class _AboutusWidgetState extends State<AboutusWidget> {
           style: FlutterFlowTheme.of(context).titleSmall.override(
                 fontFamily: 'Readex Pro',
                 color: Colors.white,
+                letterSpacing: 0.0,
               ),
         ),
         actions: const [],
@@ -94,7 +82,10 @@ class _AboutusWidgetState extends State<AboutusWidget> {
                         blurRadius: 5.0,
                         color:
                             FlutterFlowTheme.of(context).backgroundComponents,
-                        offset: const Offset(0.0, 2.0),
+                        offset: const Offset(
+                          0.0,
+                          2.0,
+                        ),
                       )
                     ],
                     borderRadius: const BorderRadius.only(
@@ -127,6 +118,7 @@ class _AboutusWidgetState extends State<AboutusWidget> {
                                         .override(
                                           fontFamily: 'Outfit',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -139,98 +131,78 @@ class _AboutusWidgetState extends State<AboutusWidget> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                child: ListTile(
+                  title: Text(
+                    'Soumith',
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Outfit',
+                          color: Colors.black,
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  subtitle: Text(
+                    'UI development',
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  tileColor: Colors.white,
+                  dense: false,
+                ),
+              ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  ListTile(
-                    title: Text(
-                      'Soumith',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                    child: ListTile(
+                      title: Text(
+                        'Pranay Koyal',
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Outfit',
+                              color: Colors.black,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                      subtitle: Text(
+                        'Backend Developer',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                      tileColor: Colors.white,
+                      dense: false,
                     ),
-                    subtitle: Text(
-                      'UI design',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
                   ),
-                  ListTile(
-                    title: Text(
-                      'Shreyas',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                    child: ListTile(
+                      title: Text(
+                        'Shiva Poojith',
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Outfit',
+                              color: Colors.black,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                      subtitle: Text(
+                        'Database/API Integration',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                      tileColor: Colors.white,
+                      dense: false,
                     ),
-                    subtitle: Text(
-                      'Backend',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Balaji',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
-                    ),
-                    subtitle: Text(
-                      'Api integration',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Akshaya',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
-                    ),
-                    subtitle: Text(
-                      'Database',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Goutham',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
-                    ),
-                    subtitle: Text(
-                      'UX designer',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Ajay',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.black,
-                          ),
-                    ),
-                    subtitle: Text(
-                      'Backend',
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
                   ),
                 ],
               ),

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'bottomdraw_model.dart';
 export 'bottomdraw_model.dart';
 
@@ -18,7 +17,7 @@ class BottomdrawWidget extends StatefulWidget {
   final LocationsRecord? details;
 
   @override
-  _BottomdrawWidgetState createState() => _BottomdrawWidgetState();
+  State<BottomdrawWidget> createState() => _BottomdrawWidgetState();
 }
 
 class _BottomdrawWidgetState extends State<BottomdrawWidget> {
@@ -35,7 +34,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
     super.initState();
     _model = createModel(context, () => BottomdrawModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,8 +46,6 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(0.0),
       child: BackdropFilter(
@@ -79,7 +76,10 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                         BoxShadow(
                           blurRadius: 12.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, 5.0),
+                          offset: Offset(
+                            0.0,
+                            5.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.circular(10.0),
@@ -128,6 +128,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                               .override(
                                                 fontFamily: 'Outfit',
                                                 color: Colors.black,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                         Padding(
@@ -147,6 +148,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                                           context)
                                                       .primary,
                                                   fontSize: 14.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
@@ -185,7 +187,11 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                     child: Text(
                                       'Parking Details',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -232,6 +238,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                                           context)
                                                       .secondaryText,
                                                   fontSize: 14.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
@@ -246,6 +253,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                               .override(
                                                 fontFamily: 'Readex Pro',
                                                 color: Colors.black,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ],
@@ -283,7 +291,11 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                           child: Text(
                                             'Price',
                                             style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
@@ -297,6 +309,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   color: Colors.black,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -335,7 +348,11 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                           child: Text(
                                             'Contact',
                                             style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
@@ -349,6 +366,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   color: Colors.black,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -395,6 +413,7 @@ class _BottomdrawWidgetState extends State<BottomdrawWidget> {
                                               fontFamily: 'Lexend Deca',
                                               color: Colors.white,
                                               fontSize: 14.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                         elevation: 0.0,

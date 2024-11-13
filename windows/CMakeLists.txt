@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(parkit LANGUAGES CXX)
+project(parkit_kp LANGUAGES CXX)
 
-set(BINARY_NAME "parkit")
+set(BINARY_NAME "parkit_kp")
 
 cmake_policy(SET CMP0063 NEW)
 
